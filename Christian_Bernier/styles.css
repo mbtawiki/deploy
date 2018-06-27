@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,900');
+
+body{
+  font-family: "Raleway", Helvetica, sans-serif;
+  background-color: #cbcbcb;
+  color: #222;
+  text-align: center;
+}
+
+h1{
+  font-family: Futura, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 88px;
+  margin-top: 200px;
+}
+h2{
+  font-weight: 200;
+  margin-top: -40px;
+  font-size: 18px;
+  margin-bottom: -10px;
+}
+h3{
+  font-weight: 400;
+  font-size: 35px;
+  margin-bottom: -20px;
+}
+p{
+  font-weight: 300;
+}
+
+@media screen and (max-width: 500px){
+  h1{
+    font-size: 50px;
+    margin-top: 50px;
+  }
+  body{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

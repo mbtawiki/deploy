@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="../../styles/general-styles.css">
+    <link rel="shortcut icon" href="../../images/favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Haymarket</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var name      ="Haymarket";
+      var users     ="11, 469";
+      var lines     ="(2) Green Line, Orange Line";
+      var routes    ="(3) GL-C, GL-E, OL";
+      var csa       ="New";
+      var afc       ="14";
+      var cfvm      ="4";
+      var fsfvm     ="6";
+      var pv        ="0";
+      var accessable="Yes";
+      var elevators ="6";
+      var escalators="1";
+      var se        ="2";
+      var stationID ="037-haymarket";
+      var folder    ="030-048-orange";
+      var headImage ="001.jpg";
+      var olColor   ="ol-shared";
+      var imgInGal  =2;
+    </script>
+    <header class="station-header br-shared">
+      <h1 id="in0" class="station-title">Alewife Station</h1>
+    </header>
+    <div class="introduction">
+      <h3>Haymarket station is a station on the <a class="hv-green ul-green in-line" href="../../green/green-menu.html">Green Line</a> and on the <a class="hv-orange ul-orange in-line" href="../../orange/orange-menu.html">Orange Line</a>.</h3>
+    </div>
+    <div class="station-image-div"><img id="head-image"></div>
+    <script type="text/javascript">
+      document.getElementById("head-image").src="../../images/" + folder + "/" + stationID + "/" + headImage;
+      document.getElementById("head-image").className="station-image " + olColor;
+    </script>    <div class="stats">
+      <h2>General Information</h2>
+      <table>
+        <tr>
+          <th class="tb-shared">Name</th>
+          <td id="in1"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Daily Users (2013)</th>
+          <td id="in2"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Lines Served</th>
+          <td id="in3"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Routes Served</th>
+          <td id="in4"></td>
+        </tr>
+      </table>
+      </div>
+      <div class="stats">
+        <h2>Fare Collection Information</h2>
+        <table>
+          <tr>
+            <th class="tb-shared">CSA Gates</th>
+            <td id="in5"></td>
+          </tr>
+          <tr>
+            <th class="tb-shared">AFC Gates</th>
+            <td id="in6"></td>
+          </tr>
+          <tr>
+            <th class="tb-shared">Cashless FVMs</th>
+            <td id="in7"></td>
+          </tr>
+          <tr>
+            <th class="tb-shared">Full Service FVMs</th>
+            <td id="in8"></td>
+          </tr>
+          <tr>
+            <th class="tb-shared">Platform Validators</th>
+            <td id="in9"></td>
+          </tr>
+        </table>
+    </div>
+    <div class="stats">
+      <h2>Accessibility Information</h2>
+      <table>
+        <tr>
+          <th class="tb-shared">Accessible</th>
+          <td id="in10"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Elevators</th>
+          <td id="in11"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Escalators</th>
+          <td id="in12"></td>
+        </tr>
+        <tr>
+          <th class="tb-shared">Staffed Entrances</th>
+          <td id="in13"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="stats" id="gallery">
+      <h2>Image Gallery</h2>
+    </div>
+    <script type="text/javascript">
+      document.getElementById("in0").innerHTML=name;
+      document.getElementById("in1").innerHTML=name;
+      document.getElementById("in2").innerHTML=users;
+      document.getElementById("in3").innerHTML=lines;
+      document.getElementById("in4").innerHTML=routes;
+      document.getElementById("in5").innerHTML=csa;
+      document.getElementById("in6").innerHTML=afc;
+      document.getElementById("in7").innerHTML=cfvm;
+      document.getElementById("in8").innerHTML=fsfvm;
+      document.getElementById("in9").innerHTML=pv;
+      document.getElementById("in10").innerHTML=accessable;
+      document.getElementById("in11").innerHTML=elevators;
+      document.getElementById("in12").innerHTML=escalators;
+      document.getElementById("in13").innerHTML=se;
+      let imgIndex = 2;
+      for(let i = 0; i < imgInGal; i++){
+         document.getElementById("gallery").innerHTML+='<div class="station-image-div"><img id="gal-image-' + imgIndex + '"></div>';
+         document.getElementById("gal-image-" + imgIndex).className = "station-image " + olColor;
+         document.getElementById("gal-image-" + imgIndex).src="../../images/" + folder + "/" + stationID + "/00" + imgIndex + ".jpg";
+         imgIndex++;
+      }
+    </script>
+  </body>
+</html>

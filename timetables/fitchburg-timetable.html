@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="../styles/general-styles.css">
+    <link rel="shortcut icon" href="../images/favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fitchburg Line Timetable</title>
+  </head>
+  <body>
+    <header>
+      <br>
+      <h1>Fitchburg Line Timetable</h1>
+    </header>
+
+    <div class="stats" id="stats-bin">
+      <h2>Monday to Friday Inbound</h2>
+      <table class="ttt" id="stats-table-monfri-in">
+        <tr class="tt" id="timeHeaders-monfri-in">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-monfri-in">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-monfri-in">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-monfri-in">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-monfri-in">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-monfri-in">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+
+      <br>
+      <h2>Monday to Friday Outbound</h2>
+      <table class="ttt" id="stats-table-monfri-out">
+        <tr class="tt" id="timeHeaders-monfri-out">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-monfri-out">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-monfri-out">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-monfri-out">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-monfri-out">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-monfri-out">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+
+      <br>
+      <h2>Saturday Inbound</h2>
+      <table class="ttt" id="stats-table-sat-in">
+        <tr class="tt" id="timeHeaders-sat-in">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-sat-in">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-sat-in">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-sat-in">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-sat-in">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-sat-in">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+
+
+      <br>
+      <h2>Saturday Outbound</h2>
+      <table class="ttt" id="stats-table-sat-out">
+        <tr class="tt" id="timeHeaders-sat-out">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-sat-out">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-sat-out">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-sat-out">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-sat-out">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-sat-out">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+
+      <br>
+      <h2>Sunday Inbound</h2>
+      <table class="ttt" id="stats-table-sun-in">
+        <tr class="tt" id="timeHeaders-sun-in">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-sun-in">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-sun-in">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-sun-in">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-sun-in">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-sun-in">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+
+
+      <br>
+      <h2>Sunday Outbound</h2>
+      <table class="ttt" id="stats-table-sun-out">
+        <tr class="tt" id="timeHeaders-sun-out">
+          <th class="tb-cr tt" colspan = "3">Station Info</th>
+          <th class="tb-cr tt" id="am-trains-sun-out">AM Trains</th>
+          <th class="tb-cr tt" id="pm-trains-sun-out">PM Trains</th>
+          <th class="tb-cr tt" id="mn-trains-sun-out">AM Trains</th>
+        </tr>
+        <tr class="tt" id="bikes-allowed-sun-out">
+          <th class="tb-cr tt" colspan="3">Bikes Allowed</th>
+        </tr>
+        <tr class="tt" id="train-names-sun-out">
+          <th class="tb-cr tt">Name</th>
+          <th class="tb-cr tt">Zone</th>
+          <th class="tb-cr tt">Accessible</th>
+        </tr>
+
+      </table>
+    </div>
+
+
+
+    <script type="text/javascript">
+      let stationNames = ["North Station", "Porter Square", "Belmont", "Waverley", "Waltham", "Brandeis / Roberts", "Kendal Green", "Hastings", "Silver Hill", "Lincoln", "Concord", "West Concord", "South Acton", "Littleton / Rte 495", "Ayer", "Shirley", "North Leominster", "Fitchburg", "Wachusett"];
+      let weekendStations = ["North Station", "Porter Square", "Belmont", "Waverley", "Waltham", "Brandeis / Roberts", "Kendal Green", "Lincoln", "Concord", "West Concord", "South Acton", "Littleton / Rte 495", "Ayer", "Shirley", "North Leominster", "Fitchburg", "Wachusett"];
+      let zones = ["1A", "1A", "1", "1", "2", "2", "3", "3", "3", "4", "5", "5", "6", "7", "8", "8", "8", "8", "8"];
+      let weekendZones = ["1A", "1A", "1", "1", "2", "2", "3", "4", "5", "5", "6", "7", "8", "8", "8", "8", "8"];
+      let accessibleStations = ["Yes", "Yes", "No", "No", "Yes", "Yes", "No","No","No","No","No","Yes", "Yes", "Yes","No","No","Yes", "Yes", "Yes"];
+      let weekendAccessibleStations = ["Yes", "Yes", "No", "No", "Yes", "Yes", "No","No","No","Yes", "Yes", "Yes","No","No","Yes", "Yes", "Yes"];
+      let trainNumbersMonFriIn = ["400","402","404","406","408","492","410","412","414","416","418","420","422","494","424","426","428","430","432"];
+      let trainNumbersMonFriOut = ["401","491","403","405","407","409","411","413","415","493","417","419","421","423","425","427","429","431","433"];
+      let trainNumbersSatIn = ["1400","1402","1404","1406","1408","1410","1412"];
+      let trainNumbersSatOut = ["1401","1403","1405","1407","1409","1411","1413"];
+      let trainNumbersSunIn = ["2400","2402","2404","2406","2408","2410","2412"];
+      let trainNumbersSunOut = ["2401","2403","2405","2407","2409","2411","2413"];
+      let bikesMonFriIn = ["Yes", "No", "No", "No", "No", "No", "No","Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"];
+      let bikesMonFriOut = ["Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "No", "No", "No", "No", "No", "No", "No", "Yes", "Yes", "Yes", "Yes"];
+      let bikesSatIn = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"];
+      let bikesSatOut = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"];
+      let bikesSunIn = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"];
+      let bikesSunOut = ["Yes","Yes","Yes","Yes","Yes","Yes","Yes"];
+      let morningTrainsMonFriIn = 9;
+      let afternoonTrainsMonFriIn = 10;
+      let midnightTrainsMonFriIn = 0;
+      let morningTrainsMonFriOut = 6;
+      let afternoonTrainsMonFriOut = 12;
+      let midnightTrainsMonFriOut = 1;
+      let morningTrainsSatIn = 3;
+      let afternoonTrainsSatIn = 4;
+      let midnightTrainsSatIn = 0;
+      let morningTrainsSatOut = 2;
+      let afternoonTrainsSatOut = 5;
+      let midnightTrainsSatOut = 0;
+      let morningTrainsSunIn = 3;
+      let afternoonTrainsSunIn = 4;
+      let midnightTrainsSunIn = 0;
+      let morningTrainsSunOut = 2;
+      let afternoonTrainsSunOut = 5;
+      let midnightTrainsSunOut = 0;
+      let timesMonFriIn = [["4:50","5:45","6:20","6:45","7:10",""    ,"8:00","9:37", "10:50","12:05","1:30","2:50","4:05",""    ,"5:43","6:59","8:25","9:30","10:35"],
+                           ["4:58","5:53","6:28","6:53","7:18",""    ,"8:08","9:45", "10:58","12:13","1:38","2:58","4:13",""    ,"5:51","7:07","8:33","9:38","10:43"],
+                           ["5:04","5:59","6:34","6:59","7:25",""    ,"8:14","9:51", "11:04","12:19","1:44","3:04","4:19",""    ,"5:57","7:13","8:39","9:44","10:49"],
+                           ["5:12","6:07","6:42","7:07","7:33",""    ,"8:22","9:59", "11:12","12:27","1:52","3:12","4:27",""    ,"6:05","7:21","8:47","9:52","10:57"],
+                           ["5:17","6:12","6:47","7:12","7:38",""    ,"8:27","10:04","11:17","12:32","1:57","3:17","4:32",""    ,"6:10","7:26","8:52","9:57","11:02"],
+                           ["5:25","6:20","6:55","7:20","7:46","7:55","8:35","10:12","11:25","12:40","2:05","3:25","4:40","5:15","6:18","7:34","9:00","10:05","11:10"],
+                           ["5:32","6:27","7:02","7:27","7:53","8:02","8:42","10:19","11:32","12:47","2:12","3:32","4:47","5:22","6:25","7:41","9:07","10:12","11:17"],
+                           ["5:36","6:31",""    ,"7:31",""    ,"8:06","8:46","10:22","11:35","12:50","2:15","3:35","4:52","5:25","6:28","7:44","9:10","10:15","11:20"],
+                           ["5:41","6:36",""    ,"7:36",""    ,"8:11","8:51","10:26","11:39","12:54","2:19","3:39","4:56","5:29","6:32","7:48","9:14","10:19","11:24"],
+                           ["5:48","6:43",""    ,"7:43",""    ,"8:18","8:58","10:33","11:46","1:01" ,"2:26","3:46","5:03","5:36","6:39","7:55","9:21","10:26","11:31"],
+                           [""    ,"6:46",""    ,""    ,""    ,"8:21",""    ,""     ,""     ,""     ,""    ,""    ,""    ,""    ,""    ,""    ,""    ,""     ,""     ],
+                           ["5:53","6:49",""    ,""    ,""    ,"8:24",""    ,"10:37","11:50",""     ,""    ,""    ,""    ,""    ,""    ,""    ,""    ,""     ,""     ],
+                           ["5:56","6:52",""    ,"7:50",""    ,"8:27","9:04","10:39","11:52","1:07" ,"2:32","3:52","5:09","5:42","6:45","8:01","9:27","10:32","11:37"],
+                           ["5:59","6:55",""    ,"7:53",""    ,"8:30","9:07","10:41","11:54","1:09" ,"2:34","3:54","5:12","5:44","6:47","8:03","9:29","10:34","11:39"],
+                           ["6:03","6:59",""    ,"7:57","8:12","8:34","9:11","10:45","11:58","1:12" ,"2:40","3:58","5:16","5:48","6:51","8:07","9:33","10:38","11:43"],
+                           ["6:08","7:04",""    ,"8:02",""    ,"8:39","9:16","10:50","12:03",""     ,""    ,""    ,"5:21","5:53",""    ,""    ,"9:38",""     ,""     ],
+                           ["6:11","7:07",""    ,"8:05",""    ,"8:42","9:19","10:52","12:05","1:19" ,"2:46","4:06","5:23","5:55","6:57","8:13","9:40","10:44","11:49"],
+                           ["6:16","7:12","7:29","8:10","8:21","8:47","9:24","10:57","12:10","1:24" ,"2:51","4:11","5:28","6:00","7:02","8:18","9:45","10:49","11:54"],
+                           ["6:27","7:23","7:40","8:21","8:32","8:58","9:35","11:07","12:20","1:34" ,"3:01","4:21","5:39","6:10","7:12","8:28","9:55","10:59","12:04"]];
+      let timesMonFriOut = [["6:25","6:45","7:43","8:45" ,"10:00","11:15","12:45","1:55","3:30","3:59","4:30","5:00","5:35","5:55","6:25","7:15","8:45" ,"10:40","12:10"],
+                            ["6:35","6:55","7:53","8:55" ,"10:10","11:25","12:55","2:05","3:40","4:09","4:41","5:10","5:46","6:05","6:35","7:25","8:55" ,"10:50","12:20"],
+                            [""    ,"7:00","7:58","9:00" ,"10:15","11:30","1:00" ,"2:10","3:45","4:14",""    ,"5:15",""    ,"6:10","6:40","7:30","9:00" ,"10:55","12:25"],
+                            [""    ,"7:02","8:00","9:02" ,"10:17",""     ,""     ,"2:12","3:48","4:17",""    ,"5:18",""    ,"6:13","6:43","7:32","9:02" ,"10:57","12:27"],
+                            [""    ,"7:07","8:05","9:07" ,"10:22","11:36","1:06" ,"2:17","3:53","4:22",""    ,"5:23","5:55","6:18","6:48","7:37","9:07" ,"11:02","12:32"],
+                            [""    ,"7:10","8:09","9:10" ,"10:25","11:39","1:09" ,"2:20","3:57","4:26",""    ,"5:27",""    ,"6:22","6:52","7:40","9:10" ,"11:05","12:35"],
+                            [""    ,"7:14","8:13","9:14" ,"10:29","11:43","1:13" ,"2:24","4:01","4:30",""    ,"5:31",""    ,"6:26","6:56","7:44","9:14" ,"11:09","12:39"],
+                            [""    ,""    ,""    ,""     ,""    ,""      ,""     ,""    ,""    ,"4:33",""    ,"5:34",""    ,"6:29","6:59","7:47",""     ,""     ,""     ],
+                            [""    ,""    ,""    ,""     ,""    ,""      ,""     ,""    ,""    ,""    ,""    ,""    ,""    ,"6:31","7:01","7:49",""     ,""     ,""     ],
+                            [""    ,"7:19","8:18","9:19" ,"10:34","11:48","1:18" ,"2:29","4:07","4:39",""    ,"5:40","6:06","6:36","7:06","7:53","9:19" ,"11:14","12:44"],
+                            [""    ,"7:24","8:23","9:24" ,"10:39","11:53","1:23" ,"2:34","4:12","4:44",""    ,"5:45","6:11","6:41","7:11","7:58","9:24" ,"11:19","12:49"],
+                            [""    ,"7:28","8:28","9:28" ,"10:43","11:57","1:27" ,"2:38","4:17","4:49",""    ,"5:50","6:16","6:46","7:16","8:02","9:28" ,"11:23","12:53"],
+                            ["6:59","7:33","8:33","9:33" ,"10:48","12:02","1:32" ,"2:43","4:21","4:53","5:07","5:54","6:21","6:50","7:20","8:07","9:33" ,"11:28","12:58"],
+                            ["7:06","7:40","8:41","9:40" ,"10:55","12:09","1:39" ,"2:50","4:28","5:00","5:14","6:01","6:28","6:57","7:27","8:14","9:40" ,"11:35","1:05" ],
+                            ["7:14",""    ,"8:49","9:48" ,"11:03","12:17","1:47" ,"2:58","4:36",""    ,"5:22","6:09","6:36","7:05","7:35","8:22","9:48" ,"11:43","1:13" ],
+                            ["7:19",""    ,"8:54","9:53" ,"11:08","12:23","1:53" ,"3:03","4:42",""    ,"5:27","6:15","6:42","7:11","7:41","8:27","9:53" ,"11:48","1:18" ],
+                            ["7:28",""    ,"9:04","10:02","11:17","12:32","2:02" ,"3:12","4:51",""    ,"5:36","6:24","6:51","7:20","7:50","8:36","10:02","11:57","1:27" ],
+                            ["7:35",""    ,"9:11","10:09","11:24","12:41","2:09" ,"3:21","4:58",""    ,"5:43","6:31","7:00","7:27","7:59","8:43","10:09","12:04","1:34" ],
+                            ["7:45",""    ,"9:21","10:19","11:34","12:51","2:19" ,"3:31","5:08",""    ,"5:53","6:41","7:10","7:37","8:09","8:53","10:19","12:14","1:44" ]];
+
+      let timesSatIn = [["6:30","8:45","10:50","1:15","3:40","6:10","9:45"],
+                        ["6:38","8:53","10:58","1:23","3:48","6:18","9:53"],
+                        ["6:44","8:59","11:04","1:29","3:54","6:24","9:59"],
+                        ["6:51","9:07","11:12","1:37","4:02","6:32","10:07"],
+                        ["6:56","9:12","11:17","1:42","4:07","6:37","10:12"],
+                        ["7:04","9:20","11:25","1:50","4:15","6:45","10:20"],
+                        ["7:10","9:26","11:31","1:56","4:21","6:51","10:26"],
+                        ["7:16","9:31","11:36","2:01","4:26","6:56","10:31"],
+                        ["7:20","9:35","11:40","2:05","4:30","7:00","10:35"],
+                        ["7:25","9:40","11:45","2:10","4:35","7:05","10:40"],
+                        ["7:30","9:45","11:50","2:15","4:40","7:10","10:45"],
+                        ["7:34","9:49","11:54","2:19","4:44","7:14","10:49"],
+                        ["7:38","9:53","11:58","2:23","4:48","7:18","10:53"],
+                        ["7:42","9:57","12:02","2:27","4:52","7:22","10:57"],
+                        ["7:45","10:00","12:05","2:30","4:55","7:25","11:00"],
+                        ["7:50","10:05","12:10","2:35","5:00","7:30","11:05"],
+                        ["8:00","10:15","12:20","2:45","5:10","7:40","11:15"]];
+      let timesSatOut = [["8:35","10:45","1:10","3:30","5:45","7:55","11:30"],
+                         ["8:45","10:55","1:20","3:40","5:55","8:05","11:40"],
+                         ["8:49","10:59","1:24","3:44","5:59","8:09","11:44"],
+                         ["8:52","11:02","1:27","3:47","6:02","8:12","11:47"],
+                         ["8:57","11:07","1:32","3:52","6:07","8:17","11:52"],
+                         ["9:00","11:10","1:35","3:55","6:10","8:20","11:55"],
+                         ["9:04","11:14","1:39","3:59","6:14","8:24","11:59"],
+                         ["9:09","11:19","1:44","4:04","6:19","8:29","12:04"],
+                         ["9:15","11:25","1:50","4:10","6:25","8:35","12:10"],
+                         ["9:18","11:28","1:53","4:13","6:28","8:38","12:13"],
+                         ["9:24","11:34","1:59","4:19","6:34","8:44","12:19"],
+                         ["9:31","11:41","2:06","4:26","6:41","8:51","12:26"],
+                         ["9:38","11:48","2:13","4:33","6:48","8:58","12:33"],
+                         ["9:43","11:53","2:18","4:38","6:53","9:03","12:38"],
+                         ["9:51","12:01","2:26","4:46","7:01","9:11","12:46"],
+                         ["10:01","12:11","2:36","4:58","7:11","9:21","12:56"],
+                         ["10:11","12:21","2:46","5:08","7:21","9:31","1:06"]];
+      let timesSunIn = [["6:30","8:45","10:50","1:15","3:40","6:10","9:45"],
+                        ["6:38","8:53","10:58","1:23","3:48","6:18","9:53"],
+                        ["6:44","8:59","11:04","1:29","3:54","6:24","9:59"],
+                        ["6:51","9:07","11:12","1:37","4:02","6:32","10:07"],
+                        ["6:56","9:12","11:17","1:42","4:07","6:37","10:12"],
+                        ["7:04","9:20","11:25","1:50","4:15","6:45","10:20"],
+                        ["7:10","9:26","11:31","1:56","4:21","6:51","10:26"],
+                        ["7:16","9:31","11:36","2:01","4:26","6:56","10:31"],
+                        ["7:20","9:35","11:40","2:05","4:30","7:00","10:35"],
+                        ["7:25","9:40","11:45","2:10","4:35","7:05","10:40"],
+                        ["7:30","9:45","11:50","2:15","4:40","7:10","10:45"],
+                        ["7:34","9:49","11:54","2:19","4:44","7:14","10:49"],
+                        ["7:38","9:53","11:58","2:23","4:48","7:18","10:53"],
+                        ["7:42","9:57","12:02","2:27","4:52","7:22","10:57"],
+                        ["7:45","10:00","12:05","2:30","4:55","7:25","11:00"],
+                        ["7:50","10:05","12:10","2:35","5:00","7:30","11:05"],
+                        ["8:00","10:15","12:20","2:45","5:10","7:40","11:15"]];
+      let timesSunOut = [["8:35","10:45","1:10","3:30","5:45","7:55","11:30"],
+                         ["8:45","10:55","1:20","3:40","5:55","8:05","11:40"],
+                         ["8:49","10:59","1:24","3:44","5:59","8:09","11:44"],
+                         ["8:52","11:02","1:27","3:47","6:02","8:12","11:47"],
+                         ["8:57","11:07","1:32","3:52","6:07","8:17","11:52"],
+                         ["9:00","11:10","1:35","3:55","6:10","8:20","11:55"],
+                         ["9:04","11:14","1:39","3:59","6:14","8:24","11:59"],
+                         ["9:09","11:19","1:44","4:04","6:19","8:29","12:04"],
+                         ["9:15","11:25","1:50","4:10","6:25","8:35","12:10"],
+                         ["9:18","11:28","1:53","4:13","6:28","8:38","12:13"],
+                         ["9:24","11:34","1:59","4:19","6:34","8:44","12:19"],
+                         ["9:31","11:41","2:06","4:26","6:41","8:51","12:26"],
+                         ["9:38","11:48","2:13","4:33","6:48","8:58","12:33"],
+                         ["9:43","11:53","2:18","4:38","6:53","9:03","12:38"],
+                         ["9:51","12:01","2:26","4:46","7:01","9:11","12:46"],
+                         ["10:01","12:11","2:36","4:58","7:11","9:21","12:56"],
+                         ["10:11","12:21","2:46","5:08","7:21","9:31","1:06"]];
+
+
+      if(morningTrainsMonFriIn==0){
+          document.getElementById("am-trains-monfri-in").style.display="none";
+      } else {
+          document.getElementById("am-trains-monfri-in").colSpan = morningTrainsMonFriIn;
+      }
+      if(afternoonTrainsMonFriIn==0){
+          document.getElementById("pm-trains-monfri-in").style.display="none";
+      } else {
+        document.getElementById("pm-trains-monfri-in").colSpan = afternoonTrainsMonFriIn;
+      }
+      if(midnightTrainsMonFriIn==0){
+          document.getElementById("mn-trains-monfri-in").style.display="none";
+      } else {
+        document.getElementById("mn-trains-monfri-in").colSpan = midnightTrainsMonFriIn;
+      }
+
+      for(let i = 0; i < bikesMonFriIn.length; i++){
+        document.getElementById("bikes-allowed-monfri-in").innerHTML += '<th class="tb-cr tt">' + bikesMonFriIn[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersMonFriIn.length; i++){
+        document.getElementById("train-names-monfri-in").innerHTML += '<th class="tb-cr tt">' + trainNumbersMonFriIn[i] + '</th>';
+      }
+      for(let i = 0; i < stationNames.length; i++){
+        document.getElementById("stats-table-monfri-in").innerHTML += '<tr class="tt" id="monfri-in-row-for-station' + i + '"><th class="tb-cr tt">' + stationNames[stationNames.length-i-1] + '</th><td class="tt">' + zones[stationNames.length-i-1] + '</td><td class="tt">' + accessibleStations[stationNames.length-i-1] + '</td>';
+        for(let j = 0; j < timesMonFriIn[i].length; j++){
+          document.getElementById("monfri-in-row-for-station" + i).innerHTML += '<td class="tt">' + timesMonFriIn[i][j] + '</td></tr>';
+        }
+      }
+
+
+      if(morningTrainsMonFriOut==0){
+          document.getElementById("am-trains-monfri-out").style.display="none";
+      } else {
+          document.getElementById("am-trains-monfri-out").colSpan = morningTrainsMonFriOut;
+      }
+      if(afternoonTrainsMonFriOut==0){
+          document.getElementById("pm-trains-monfri-out").style.display="none";
+      } else {
+        document.getElementById("pm-trains-monfri-out").colSpan = afternoonTrainsMonFriOut;
+      }
+      if(midnightTrainsMonFriOut==0){
+          document.getElementById("mn-trains-monfri-out").style.display="none";
+      } else {
+        document.getElementById("mn-trains-monfri-out").colSpan = midnightTrainsMonFriOut;
+      }
+
+      for(let i = 0; i < bikesMonFriOut.length; i++){
+        document.getElementById("bikes-allowed-monfri-out").innerHTML += '<th class="tb-cr tt">' + bikesMonFriOut[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersMonFriOut.length; i++){
+        document.getElementById("train-names-monfri-out").innerHTML += '<th class="tb-cr tt">' + trainNumbersMonFriOut[i] + '</th>';
+      }
+      for(let i = 0; i < stationNames.length; i++){
+        document.getElementById("stats-table-monfri-out").innerHTML += '<tr class="tt" id="monfri-out-row-for-station' + i + '"><th class="tb-cr tt">' + stationNames[i] + '</th><td class="tt">' + zones[i] + '</td><td class="tt">' + accessibleStations[i] + '</td>';
+        for(let j = 0; j < timesMonFriOut[i].length; j++){
+          document.getElementById("monfri-out-row-for-station" + i).innerHTML += '<td class="tt">' + timesMonFriOut[i][j] + '</td></tr>';
+        }
+      }
+
+
+      if(morningTrainsSatIn==0){
+          document.getElementById("am-trains-sat-in").style.display="none";
+      } else {
+          document.getElementById("am-trains-sat-in").colSpan = morningTrainsSatIn;
+      }
+      if(afternoonTrainsSatIn==0){
+          document.getElementById("pm-trains-sat-in").style.display="none";
+      } else {
+        document.getElementById("pm-trains-sat-in").colSpan = afternoonTrainsSatIn;
+      }
+      if(midnightTrainsSatIn==0){
+          document.getElementById("mn-trains-sat-in").style.display="none";
+      } else {
+        document.getElementById("mn-trains-sat-in").colSpan = midnightTrainsSatIn;
+      }
+
+      for(let i = 0; i < bikesSatIn.length; i++){
+        document.getElementById("bikes-allowed-sat-in").innerHTML += '<th class="tb-cr tt">' + bikesSatIn[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersSatIn.length; i++){
+        document.getElementById("train-names-sat-in").innerHTML += '<th class="tb-cr tt">' + trainNumbersSatIn[i] + '</th>';
+      }
+      for(let i = 0; i < weekendStations.length; i++){
+        document.getElementById("stats-table-sat-in").innerHTML += '<tr class="tt" id="sat-in-row-for-station' + i + '"><th class="tb-cr tt">' + weekendStations[weekendStations.length-i-1] + '</th><td class="tt">' + weekendZones[weekendStations.length-i-1] + '</td><td class="tt">' + weekendAccessibleStations[weekendStations.length-i-1] + '</td>';
+        for(let j = 0; j < timesSatIn[i].length; j++){
+          document.getElementById("sat-in-row-for-station" + i).innerHTML += '<td class="tt">' + timesSatIn[i][j] + '</td></tr>';
+        }
+      }
+
+
+      if(morningTrainsSatOut==0){
+          document.getElementById("am-trains-sat-out").style.display="none";
+      } else {
+          document.getElementById("am-trains-sat-out").colSpan = morningTrainsSatOut;
+      }
+      if(afternoonTrainsSatOut==0){
+          document.getElementById("pm-trains-sat-out").style.display="none";
+      } else {
+        document.getElementById("pm-trains-sat-out").colSpan = afternoonTrainsSatOut;
+      }
+      if(midnightTrainsSatOut==0){
+          document.getElementById("mn-trains-sat-out").style.display="none";
+      } else {
+        document.getElementById("mn-trains-sat-out").colSpan = midnightTrainsSatOut;
+      }
+
+      for(let i = 0; i < bikesSatOut.length; i++){
+        document.getElementById("bikes-allowed-sat-out").innerHTML += '<th class="tb-cr tt">' + bikesSatOut[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersSatOut.length; i++){
+        document.getElementById("train-names-sat-out").innerHTML += '<th class="tb-cr tt">' + trainNumbersSatOut[i] + '</th>';
+      }
+      for(let i = 0; i < weekendStations.length; i++){
+        document.getElementById("stats-table-sat-out").innerHTML += '<tr class="tt" id="sat-out-row-for-station' + i + '"><th class="tb-cr tt">' + weekendStations[i] + '</th><td class="tt">' + weekendZones[i] + '</td><td class="tt">' + weekendAccessibleStations[i] + '</td>';
+        for(let j = 0; j < timesSatOut[i].length; j++){
+          document.getElementById("sat-out-row-for-station" + i).innerHTML += '<td class="tt">' + timesSatOut[i][j] + '</td></tr>';
+        }
+      }
+
+
+
+      if(morningTrainsSunIn==0){
+          document.getElementById("am-trains-sun-in").style.display="none";
+      } else {
+          document.getElementById("am-trains-sun-in").colSpan = morningTrainsSunIn;
+      }
+      if(afternoonTrainsSunIn==0){
+          document.getElementById("pm-trains-sun-in").style.display="none";
+      } else {
+        document.getElementById("pm-trains-sun-in").colSpan = afternoonTrainsSunIn;
+      }
+      if(midnightTrainsSunIn==0){
+          document.getElementById("mn-trains-sun-in").style.display="none";
+      } else {
+        document.getElementById("mn-trains-sun-in").colSpan = midnightTrainsSunIn;
+      }
+
+      for(let i = 0; i < bikesSunIn.length; i++){
+        document.getElementById("bikes-allowed-sun-in").innerHTML += '<th class="tb-cr tt">' + bikesSunIn[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersSunIn.length; i++){
+        document.getElementById("train-names-sun-in").innerHTML += '<th class="tb-cr tt">' + trainNumbersSunIn[i] + '</th>';
+      }
+      for(let i = 0; i < weekendStations.length; i++){
+        document.getElementById("stats-table-sun-in").innerHTML += '<tr class="tt" id="sun-in-row-for-station' + i + '"><th class="tb-cr tt">' + weekendStations[weekendStations.length-i-1] + '</th><td class="tt">' + weekendZones[weekendStations.length-i-1] + '</td><td class="tt">' + weekendAccessibleStations[weekendStations.length-i-1] + '</td>';
+        for(let j = 0; j < timesSunIn[i].length; j++){
+          document.getElementById("sun-in-row-for-station" + i).innerHTML += '<td class="tt">' + timesSunIn[i][j] + '</td></tr>';
+        }
+      }
+
+
+      if(morningTrainsSunOut==0){
+          document.getElementById("am-trains-sun-out").style.display="none";
+      } else {
+          document.getElementById("am-trains-sun-out").colSpan = morningTrainsSunOut;
+      }
+      if(afternoonTrainsSunOut==0){
+          document.getElementById("pm-trains-sun-out").style.display="none";
+      } else {
+        document.getElementById("pm-trains-sun-out").colSpan = afternoonTrainsSunOut;
+      }
+      if(midnightTrainsSunOut==0){
+          document.getElementById("mn-trains-sun-out").style.display="none";
+      } else {
+        document.getElementById("mn-trains-sun-out").colSpan = midnightTrainsSunOut;
+      }
+
+      for(let i = 0; i < bikesSunOut.length; i++){
+        document.getElementById("bikes-allowed-sun-out").innerHTML += '<th class="tb-cr tt">' + bikesSunOut[i] + '</th>';
+      }
+      for(let i = 0; i < trainNumbersSunOut.length; i++){
+        document.getElementById("train-names-sun-out").innerHTML += '<th class="tb-cr tt">' + trainNumbersSunOut[i] + '</th>';
+      }
+      for(let i = 0; i < weekendStations.length; i++){
+        document.getElementById("stats-table-sun-out").innerHTML += '<tr class="tt" id="sun-out-row-for-station' + i + '"><th class="tb-cr tt">' + weekendStations[i] + '</th><td class="tt">' + weekendZones[i] + '</td><td class="tt">' + weekendAccessibleStations[i] + '</td>';
+        for(let j = 0; j < timesSunOut[i].length; j++){
+          document.getElementById("sun-out-row-for-station" + i).innerHTML += '<td class="tt">' + timesSunOut[i][j] + '</td></tr>';
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

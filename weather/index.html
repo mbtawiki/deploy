@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <style> body {padding: 0; margin: 0;} </style>
+    <link rel="stylesheet" href="../styles/weather.css">
+    <script src="p5/p5.min.js"></script>
+    <script src="p5/addons/p5.dom.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+    <script id="weather" type="text/javascript"></script>
+    <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script> -->
+    <title id = "title">Loading...</title>
+  </head>
+  <body>
+    <h1 class="options-header">Displayed<h1>
+    <label class="container">Cloud Cover
+      <input id="cloud" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Temperature
+      <input id="temp" type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Feels-Like Temperature
+      <input id="feels-like" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Wind Speed
+      <input id="wind" type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Wind Direction
+      <input id="direction" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Humidity
+      <input id="humidity" type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
+    <label class="container">Visibility
+      <input id="visibility" type="checkbox">
+      <span class="checkmark"></span>
+    </label>
+    <br>
+    <h1 class="options-header">Color Scheme</h1>
+    <label class="container">Cools
+      <input id="blues" type="radio" name="colors" checked="checked">
+      <span class="checkmark radio-button"></span>
+    </label>
+    <label class="container">Warms
+      <input id="warms" type="radio" name="colors">
+      <span class="checkmark radio-button"></span>
+    </label>
+    <label class="container">Rainbow
+      <input id="rainbow" type="radio" name="colors">
+      <span class="checkmark radio-button"></span>
+    </label>
+    <label class="container">Greyscale
+      <input id="greyscale" type="radio" name="colors">
+      <span class="checkmark radio-button"></span>
+    </label>
+    <br>
+    <p id=details>
+      This website is an <br>
+      experimental test with <br>
+      using APIs and pulling <br>
+      data from an external  <br>
+      source.                <br>
+                             <br>
+      Created by Christian B.
+    </p>
+
+
+    <!-- <br><input class="option" type="checkbox" id="temp">Temperature</input>
+    <input type="checkbox" id="cloud">Cloud Cover</input>
+    <br><input class="option" type="checkbox" id="feels-like">Feels-Like Temperature</input>
+    <br><input class="option" type="checkbox" id="wind">Wind Speed</input>
+    <br><input class="option" type="checkbox" id="direction">Wind Direction</input>
+    <br><input class="option" type="checkbox" id="humidity">Humidity</input>
+    <br><input class="option" type="checkbox" id="visibility">Visibility</input> -->
+    <!-- <div class="weather-container"> -->
+      <script src="weather.js"></script>
+      <!-- <script>
+        document.getElementById('weather').src = 'weather.js';
+      </script> -->
+    <!-- </div> -->
+  </body>
+</html>

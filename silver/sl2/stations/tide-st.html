@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="../../../styles/general-styles.css">
+    <link rel="shortcut icon" href="../../../images/favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tide St</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var name      ="Tide St Station";
+    var lines     ="(1) Silver Line";
+    var routes    ="(1) SL2";
+    var accessable="Yes";
+    var stationID ="131-tide-street";
+    var folder    ="130-134-silver-2";
+    var headImage ="001.jpg";
+    var olColor   ="ol-silver";
+    var imgInGal  =0;
+    </script>
+    <header class="station-header br-silver">
+      <h1 id="in0" class="station-title">Andrew Station</h1>
+    </header>
+    <div class="introduction">
+      <h3>Tide St station is a station on the <a class="hv-silver ul-silver in-line" href="../../silver-menu.html">Silver Line</a>.</h3>
+    </div>
+    <div class="station-image-div"><img id="head-image"></div>
+    <script type="text/javascript">
+      document.getElementById("head-image").src="../../../images/" + folder + "/" + stationID + "/" + headImage;
+      document.getElementById("head-image").className="station-image " + olColor;
+    </script>    <div class="stats">
+      <h2>General Information</h2>
+      <table>
+        <tr>
+          <th class="tb-silver">Name</th>
+          <td id="in1"></td>
+        </tr>
+        <tr>
+          <th class="tb-silver">Lines Served</th>
+          <td id="in3"></td>
+        </tr>
+        <tr>
+          <th class="tb-silver">Routes Served</th>
+          <td id="in4"></td>
+        </tr>
+      </table>
+      </div>
+
+    <div class="stats">
+      <h2>Accessibility Information</h2>
+      <table>
+        <tr>
+          <th class="tb-silver">Accessible</th>
+          <td id="in10"></td>
+        </tr>
+      </table>
+    </div>
+    <script type="text/javascript">
+      document.getElementById("in0").innerHTML=name;
+      document.getElementById("in1").innerHTML=name;
+      document.getElementById("in3").innerHTML=lines;
+      document.getElementById("in4").innerHTML=routes;
+      document.getElementById("in10").innerHTML=accessable;
+    </script>
+  </body>
+</html>
