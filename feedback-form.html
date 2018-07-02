@@ -27,7 +27,8 @@
     <!--FEEDBACK FORM AND JS PROCESSING-->
     <div id="feedback-area">
       <div id="feedback-box">
-        <form id="labs-experimental-lab-feedback" action="#" class="labs-feedback" onsubmit="donewithfeedback()">
+        <form id="labs-experimental-lab-feedback" action="#" class="labs-feedback" onsubmit="donewithfeedback()" netlify-honeypot="bot-field" name="lab-feedback-form" netlify>
+
           <h3 class="feedback-header"><strong>Please provide feedback</strong></h3>
           <h5 class="feedback-question">This feature worked the way I expected.</h5>
           <div class="feedback-radios">
@@ -75,9 +76,13 @@
               <span class="checkmark"></span>
             </label>
           </div>
+
           <input type="submit" class="feedback-submit" id="form-submit-button" value="Submit feedback">
+          <input type="text" name="lab" class="no-show" id="lab-name-in-form" value="default" readonly>
         </form>
         <script type="text/javascript">
+          document.getElementById("lab-name-in-form").value = lab;
+
           if(localStorage.getItem("form-submitted-" + lab) == "1"){
             document.getElementById("feedback-area").className += "no-show";
           }
