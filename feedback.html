@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="general-styles.css">
+    <link rel="shortcut icon" href="favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback</title>
+  </head>
+  <body>
+    <div class="box-parent">
+      <header>
+        <br>
+        <br>
+        <h1>Feedback</h1>
+        <h2>Please leave any comments, questions, or concerns here!</h2>
+        <br>
+        <br>
+        <form action="success.html" netlify-honeypot="bot-field" name="contact-form" netlify>
+          <p>
+            <label><input class="simp-txt" type="text" name="first-name" placeholder="First Name (required)" required></label>
+          </p>
+          <p>
+            <label><input class="simp-txt" type="text" name="last-name" placeholder="Last Name"></label>
+          </p>
+          <p>
+            <label><input class="eml" type="email" name="Email" placeholder="Email (required)" required></label>
+          </p>
+          <p>
+            <input type="radio" name="lab-tested" value="sample-1" checked>Sample Lab 1<br></input>
+            <input type="radio" name="lab-tested" value="sample-2">Sample Lab 2<br></input>
+            <input type="radio" name="lab-tested" value="sample-3">Sample Lab 3<br></input>
+          </p>
+          <p>
+            <label><textarea class="comment" name="message" placeholder="Comment (required)" required></textarea></label>
+          </p>
+          <p>
+            <button id="submit-button" type="submit">Send</button>
+          </p>
+        </form>
+      </header>
+    </div>
+  </body>
+</html>

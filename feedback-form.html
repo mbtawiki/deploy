@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="general-styles.css">
+    <link rel="shortcut icon" href="favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback Form</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let lab="feedback-form";
+
+      if(localStorage.getItem("form-submitted-" + lab) == null){
+        localStorage.setItem("form-submitted-" + lab, "0");
+      }
+    </script>
+    <!--SET UP AND FORM PROCESSING ABOVE-->
+
+    <header>
+      <br>
+      <h1>Feedback Form</h1>
+    </header>
+    <h3 class="white-text">This is a test of the feedback form in the lower right corner. Please try it out!</h3>
+
+    <!--FEEDBACK FORM AND JS PROCESSING-->
+    <div id="feedback-area">
+      <div id="feedback-box">
+        <form id="labs-experimental-lab-feedback" action="#" class="labs-feedback" onsubmit="donewithfeedback()" netlify-honeypot="bot-field" name="lab-feedback-form" netlify>
+
+          <h3 class="feedback-header"><strong>Please provide feedback</strong></h3>
+          <h5 class="feedback-question">This feature worked the way I expected.</h5>
+          <div class="feedback-radios">
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="expected-function" value="1">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="expected-function" value="2">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="expected-function" value="3">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="expected-function" value="4">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="expected-function" value="5">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <h5 class="feedback-question">I would use this feature</h5>
+          <div class="feedback-radios">
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="feature-use" value="1">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="feature-use" value="2">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="feature-use" value="3">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="feature-use" value="4">
+              <span class="checkmark"></span>
+            </label>
+            <label class="radio-container">
+              <input type="radio" class="feedback-radio" name="feature-use" value="5">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+
+          <input type="submit" class="feedback-submit" id="form-submit-button" value="Submit feedback">
+          <input type="text" name="lab" class="no-show" id="lab-name-in-form" value="default" readonly>
+        </form>
+        <script type="text/javascript">
+          document.getElementById("lab-name-in-form").value = lab;
+
+          if(localStorage.getItem("form-submitted-" + lab) == "1"){
+            document.getElementById("feedback-area").className += "no-show";
+          }
+          document.getElementById("form-submit-button").addEventListener("click",
+          function(){
+            document.getElementById("feedback-area").className+="no-show";
+            localStorage.setItem("form-submitted-" + lab, "1");
+            alert("Thanks for providing feedback for this lab! Your feedback is very important to producing a more usable site!");
+          });
+        </script>
+      </div>
+    </div>
+
+
+  </body>
+</html>
