@@ -23,6 +23,10 @@ p{
   text-align: center;
 }
 
+.link-text{
+  font-size: 16px;
+}
+
 .updates{
     float: left;
     color: white;
@@ -87,6 +91,9 @@ button{
 }
 .br-ferry{
   background-color: #1ec3e8;
+}
+.br-bus{
+  background-color: #eeee00;
 }
 .cl-red{
   color: red;
@@ -167,6 +174,12 @@ button{
   color: white;
   background-color: #b5a68b;
   text-decoration-color: #b5a68b;
+  border-radius: 5px;
+}
+.hv-bus:hover{
+  color: white;
+  background-color: #eeee00;
+  text-decoration-color: #eeee00;
   border-radius: 5px;
 }
 .introduction{
@@ -362,6 +375,12 @@ border-bottom: 2px solid white;
   text-decoration: underline;
   text-decoration-color: #b5a68b;
 }
+.ul-bus{
+  -webkit-text-decoration-color: #eeee00;
+  text-decoration: underline;
+  text-decoration-color: #eeee00;
+}
+
 
 #error-404{
   margin-top: 40vh;

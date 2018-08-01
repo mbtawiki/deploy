@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="../../../styles/general-styles.css">
+    <link rel="shortcut icon" href="../../../images/favicon.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title class="inName">Loading...</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var name        ="Route 456";
+    var description ="Salem Depot - Central Square, Lynn via Highland Avenue";
+    var term1       ="Salem Depot";
+    var term2       ="Central Square, Lynn";
+    </script>
+    <header class="station-header br-bus">
+      <h1 class="inName">Loading...</h1>
+    </header>
+    <div class="introduction">
+      <h3><span class="inName">Loading...</span> is a <a class="hv-bus ul-bus" href="../../bus-menu.html">Bus</a> route.</h3>
+    </div>
+    <div class="stats">
+      <h2>Route Information</h2>
+      <table>
+        <tr>
+          <th class="tb-bus">Name</th>
+          <td class="inName">Loading...</td>
+        </tr>
+        <tr>
+          <th class="tb-bus">Description</th>
+          <td id="in2">Loading...</td>
+        </tr>
+      </table>
+      </div>
+      <div class="stats">
+        <h2>Termini Information</h2>
+        <table>
+          <tr>
+            <th class="tb-bus">Terminus 1</th>
+            <td id="in5">Loading...</td>
+          </tr>
+          <tr>
+            <th class="tb-bus">Terminus 2</th>
+            <td id="in6">Loading...</td>
+          </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+      for(let i = 0; i < 4; i++){
+        document.getElementsByClassName("inName")[i].innerHTML=name;
+      }
+      document.getElementById("in2").innerHTML=description;
+      document.getElementById("in5").innerHTML=term1;
+      document.getElementById("in6").innerHTML=term2;
+    </script>
+  </body>
+</html>
