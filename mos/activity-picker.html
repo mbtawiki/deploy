@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+    <link rel="stylesheet" href="../styles/mos.css">
+    <link rel="shortcut icon" href="../images/mos_fav.png" type-"image/x-icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Activity Picker</title>
+  </head>
+  <body>
+    <div id="CONTENT">
+    <h1>Tech Studio Activity Picker</h1>
+    <h4>Please select your preferences and settings</h4>
+    <form id="inputs" action="#" onsubmit="findActivity();">
+      <h4>Staff:</h4><input class="inputbox" type="text" id="staff" value="5">
+      <h4>Visitors Expected:</h4><input class="inputbox" type="text" id="visitors" value="200">
+      <label class="container">Design Challenges?
+        <input id="dc-awd" type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
+      <label class="container">Legacy?
+        <input id="lgcy" type="checkbox">
+        <span class="checkmark"></span>
+      </label>
+      <button id="sbm-btt" type="submit">Find Activities!</button>
+    </form>
+    <br><br>
+    <h4 id="rcmd" class="hidden">We recommend you do...</h4>
+    <div id="results"></div>
+    <footer>
+    <h6>Version 1.0 by Christian Bernier</h6>
+    </footer>
+  </div>
+    <script>
+    function findActivity(){
+      document.getElementById("results").innerHTML = "";
+      let staff = document.getElementById("staff").value;
+      let estimated_visitors = document.getElementById("visitors").value;
+      if((staff > 15) || (estimated_visitors > 1000)){
+        alert("There's no way...");
+        leave();
+      }
+      let legacy = document.getElementById("lgcy").checked;
+      let dc_allowed = document.getElementById("dc-awd").checked;
+      let ct_allowed = true;
+      let october = false;
+      let visitors_remaining = estimated_visitors;
+      let staff_remaining = staff;
+      //for activities, [name, min_staff, max_staff, min_visitors, max_visitors, cart, modern];
+      let activities = [
+                        //modern design challenges
+                        ["Pink Puddle",            2, 4, 0,   125, false, true],
+                        ["Create-a-Claw",          3, 5, 75,  300, false, true],
+                        ["Ships Ahoy!",            5, 7, 125, 400, false, true],
+                        ["Ewok Escape",            3, 5, 75,  200, false, true],
+                        ["Trophy Triathalon",      3, 5, 100, 250, false, true],
+                        ["Echo Base Bobsleds",     2, 4, 100, 500, false, true],
+                        ["Soaring Satellites",     2, 4, 100, 350, false, true],
+                        ["Extreme Trampolines",    3, 5, 150, 700, false, true],
+                        ["Mission: Mars",          4, 6, 100, 275, false, true],
+                        ["Shipwrecked",            2, 4, 0,   125, false, true],
+
+                        //modern cart activities
+                        ["Kibo",                   1, 2, 25,  100, true, true],
+                        ["Fruit Loops",            1, 3, 0,   75, true, true],
+                        ["Dash Robot",             1, 3, 50,  150, true, true],
+                        ["Tic-Tac-Code",           1, 3, 25,  135, true, true],
+
+                        //modern satellite activities
+              ["Satellite Soaring Satellites",     1, 3, 0,   200, true, true],
+              ["Satellite Pink Puddle",            1, 3, 0,   100, true, true],
+              ["Satellite Echo Base Bobsleds",     2, 4, 0,   150, true, true],
+
+                        //retired design challenges
+                        ["Aviary Architect",       3, 5, 0,   300, false, false],
+                        ["Animal House",           3, 5, 0,   250, false, false],
+                        ["Mission: Orbit",         3, 6, 0,   200, false, false],
+                        ["Whirling Windmills",     2, 5, 0,   150, false, false],
+                        ["H2Go",                   4, 6, 0,   300, false, false],
+                        ["Kinematic Fanatic",      3, 5, 0,   250, false, false],
+                        ["Reaction Contraption",   3, 5, 0,   250, false, false],
+                        ["Saturn Explorer",        2, 4, 0,   250, false, false]
+                      ];
+      let ableToDoWithStaff = [];
+      let haveNotDone = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+
+      if(staff > 1){
+        if(dc_allowed){
+          chooseActivity(false);
+        }
+      } else {
+        chooseActivity(true);
+      }
+
+      while((visitors_remaining > 0) && (staff_remaining > 0)){
+        chooseActivity(true);
+      }
+
+
+      function chooseActivity(cart){
+        if(!legacy){
+        if(!cart){
+          let visitors_processing = visitors_remaining;
+
+          if(visitors_remaining >= 700){
+            visitors_processing = 400;
+          }
+          for(let i = 0; i < 10; i++){
+            if(staff_remaining >= activities[i][1]){
+              if(visitors_processing <= activities[i][4]){
+                ableToDoWithStaff.push(i);
+              }
+            }
+          }
+        } else {
+
+          let visitors_processing = visitors_remaining;
+
+          if(visitors_remaining >= 200){
+            visitors_processing = 125;
+          }
+          for(let i = 10; i < 17; i++){
+            if(staff_remaining >= activities[i][1]){
+              if(visitors_processing <= activities[i][4]){
+                ableToDoWithStaff.push(i);
+              }
+            }
+          }
+        }
+      } else {
+        let visitors_processing = visitors_remaining;
+
+        if(visitors_remaining >= 700){
+          visitors_processing = 400;
+        }
+        for(let i = 17; i < 24; i++){
+          if(staff_remaining >= activities[i][1]){
+            if(visitors_processing <= activities[i][4]){
+              ableToDoWithStaff.push(i);
+            }
+          }
+        }
+      }
+        chooseBetween(ableToDoWithStaff);
+      }
+
+      function showError(type){
+        let errs = ["Not enough staff to choose an activity.", "Not enough staff for visitors present."];
+        console.log(errs[type]);
+      }
+
+      document.getElementById("rcmd").className -= "hidden";
+
+      function chooseBetween(avaliableToDo){
+        console.log(avaliableToDo);
+
+
+        let selectionNum = Math.floor(Math.random() * avaliableToDo.length);
+        let selection = avaliableToDo[selectionNum];
+
+        let toBeRemoved = haveNotDone.indexOf(selection);
+        if(toBeRemoved != -1){
+          haveNotDone[toBeRemoved] = -1;
+          if(toBeRemoved < 10){
+            for(let i = 0; i < 10; i++){
+              haveNotDone[i] = -1;
+            }
+          }
+          if((toBeRemoved == 0) || (toBeRemoved == 15)){  //pink puddle DC & sat
+            haveNotDone[0] = -1;
+            haveNotDone[15] = -1;
+          }
+          if((toBeRemoved == 5) || (toBeRemoved == 16)){  //bobsleds DC & sat
+            haveNotDone[5] = -1;
+            haveNotDone[16] = -1;
+          }
+          if((toBeRemoved == 6) || (toBeRemoved == 14)){  //satellites DC & sat
+            haveNotDone[6] = -1;
+            haveNotDone[14] = -1;
+          }
+          let activityName = activities[selection][0];
+          if((activityName == "Soaring Satellites") && october){
+            activityName = "Bewitching Broomsticks";
+          }
+          if((activityName == "Satellite Soaring Satellites") && october){
+            activityName = "Satellite Bewitching Broomsticks";
+          }
+          visitors_remaining -= activities[selection][4];
+          staff_remaining -= activities[selection][1];
+
+          document.getElementById("results").innerHTML+="<h2>" + activityName + "</h2>";
+          console.log(activityName);
+        }
+      }
+    }
+
+    function leave(){
+      randomFunctionThatDoesntExistAndWillBreakTheConsole();
+    }
+    </script>
+  </body>
+</html>

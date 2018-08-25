@@ -1,0 +1,146 @@
+body{
+  background-color: #222;
+  margin: 0;
+}
+
+#CONTENT{
+  text-align: center;
+}
+
+h1, h2, h4, h6{
+  color: white;
+  font-family: "Arial", Arial, sans-serif;
+}
+
+.hidden{
+  display:none;
+}
+
+input{
+  margin: 10px;
+}
+
+footer{
+  background-color: #333;
+  grid-area: footer;
+  line-height: 100%;
+  color: #666;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-size: 16px;
+}
+
+.option{
+  background-color: #000;
+}
+
+.container{
+  display: block;
+  position: relative;
+  padding-top: 5px;
+  padding-left: 40px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: white;
+  font-family: "Arial", Arial, sans-serif;
+}
+
+.container input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.inputbox{
+  width: 30%;
+  color: white;
+  background-color: #333;
+  padding: 8px 14px;
+  box-sizing: border-box;
+  border: none;
+  border: 3px solid #333;
+  font-size: 14px;
+  -webkit-transition: width 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out;
+}
+.inputbox:focus{
+  width: 30%;
+  background-color: #555;
+  border: 3px solid #999;
+}
+
+#sbm-btt{
+  margin-top: 10px;
+  width: 20%;
+  height: 50px;
+  color: white;
+  background-color: #333;
+  border: 2px solid #999;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.checkmark{
+  position: absolute;
+  top: 0;
+  left: calc(50vw - 125px);
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.container:hover input ~ .checkmark{
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark{
+  background-color: #2196f3;
+}
+
+.checkmark:after{
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after{
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.options-header{
+  padding-left: 10px;
+  font-family: "Arial", Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.radio-button{
+  border-radius: 50%;
+}
+
+#details{
+  font-weight: 300;
+  padding-left: 10px;
+  font-family: "Arial", Arial, sans-serif;
+  font-size: 14px;
+  color: white;
+}
