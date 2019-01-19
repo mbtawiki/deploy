@@ -14,6 +14,7 @@
       var users     ="44";
       var lines     ="(1) Mattapan Line";
       var routes    ="(1) ML";
+      var doors     ="Right";
       var accessable="No";
       var stationID ="027-valley-road";
       var folder    ="023-029-mattapan";
@@ -51,6 +52,10 @@
           <th class="tb-red">Routes Served</th>
           <td id="in4"></td>
         </tr>
+        <tr>
+          <th class="tb-red">Door Direction</th>
+          <td id="inDOOR"></td>
+        </tr>
       </table>
       </div>
     <div class="stats">
@@ -72,6 +77,7 @@
       document.getElementById("in2").innerHTML=users;
       document.getElementById("in3").innerHTML=lines;
       document.getElementById("in4").innerHTML=routes;
+      document.getElementById("inDOOR").innerHTML=doors;
       document.getElementById("in10").innerHTML=accessable;
       let imgIndex = 2;
       for(let i = 0; i < imgInGal; i++){

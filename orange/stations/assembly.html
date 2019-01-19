@@ -13,6 +13,7 @@
     var name      ="Assembly Station";
     var lines     ="(1) Orange Line";
     var routes    ="(1) OL";
+    var doors     ="Left";
     var stationID ="033-assembly";
     var folder    ="030-048-orange";
     var headImage ="001.jpg";
@@ -45,6 +46,10 @@
           <th class="tb-orange">Routes Served</th>
           <td id="in4"></td>
         </tr>
+        <tr>
+          <th class="tb-orange">Door Direction</th>
+          <td id="inDOOR"></td>
+        </tr>
       </table>
       </div>
       <div class="stats" id="gallery">
@@ -56,6 +61,7 @@
       document.getElementById("in1").innerHTML=name;
       document.getElementById("in3").innerHTML=lines;
       document.getElementById("in4").innerHTML=routes;
+      document.getElementById("inDOOR").innerHTML=doors;
       let imgIndex = 2;
       for(let i = 0; i < imgInGal; i++){
          document.getElementById("gallery").innerHTML+='<div class="station-image-div"><img id="gal-image-' + imgIndex + '"></div>';

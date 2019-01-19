@@ -1,88 +1,377 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script>
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114329193-1"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-114329193-1');</script> -->
     <link rel="stylesheet" href="../../styles/general-styles.css">
-    <link rel="shortcut icon" href="../../images/favicon.png" type-"image/x-icon" />
+<!--     <link rel="shortcut icon" href="../../images/favicon.png" type-"image/x-icon" /> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JFK/UMass</title>
+    <script text="text/javascript">
+        //dynamic information for each station
+        let station       = "Alewife";
+        let terminus      = true;
+        let users         = "11,221";
+        let lines         = ["Red Line"];
+        let routes        = ["RL-Ashmont","RL-Braintree"];
+        let lineCode      = "red";
+        let fullLine      = "Red Line";
+
+        //styling
+        let hv            = "hv-" + lineCode;
+        let ul            = "ul-" + lineCode;
+        let br            = "br-" + lineCode;
+        let tb            = "tb-" + lineCode;
+        let menu          = "../" + lineCode + "-menu.html";
+        let fullName      = station + " Station";
+
+        //setting vars
+        let data, data2;
+
+        //station info
+        let parkingAreas  = 0;
+        let carCharger    = 0;
+        let pickDrops     = 0;
+        let pedalAndParks = 0;
+
+        //accessibility
+        let accessible    = 0;
+        let escalators    = 0;
+        let elevators     = 0;
+        let portableLifts = 0;
+        let elevatedSubs  = 0;
+
+        //fares
+        let charlieCards  = 0;
+        let cashlessFVM   = 0;
+        let fullServiceFVM= 0;
+
+        //api
+        let apiKey = "e9cca8f8775749b9b79e4bed57f6216c";
+
+
+        let sta = getPlaceName(station);
+        let url1 = "https://api-v3.mbta.com/facilities?api_key = " + apiKey + "&filter[stop]=";
+        let url = url1 + sta;
+        // $.ajax(url, {
+        //   success: (rec) => { data = rec; callStation(); },
+        //   error: (err) => { console.log(err);}
+        // });
+
+        fetch(url)
+          .then(response => {return response.json();})
+          .then(json     => {data = json; callStation();});
+
+        function callStation(){
+          let url1 = "https://api-v3.mbta.com/stops/";
+          let url = url1 + getPlaceName(station);
+          fetch(url)
+            .then(response => {return response.json();})
+            .then(json     => {data2 = json; gotData();});
+        }
+        function addToHTML(){
+          for(let i = 0; i < document.getElementsByClassName("station-short").length; i++){
+            document.getElementsByClassName("station-short")[i].innerHTML = station;
+          }
+          for(let i = 0; i < document.getElementsByClassName("station-full").length; i++){
+            document.getElementsByClassName("station-full")[i].innerHTML = fullName;
+          }
+          let len = document.getElementsByClassName("tb_line").length;
+          for(let i = 0; i < len; i++){
+            document.getElementsByClassName("tb_line")[0].className = tb;
+          }
+          document.getElementById("br_line").className += " " + br;
+          if(terminus){
+            document.getElementById("terminus").innerHTML = " terminus";
+          }
+          let menuClasses = hv + " " + ul + " in-line";
+          document.getElementById("menu").innerHTML = "<a class='" + menuClasses +"'href=" + menu + ">" + fullLine + "</a>";
+          document.getElementById("users").innerHTML = users;
+          document.getElementById("lines").innerHTML += "(" + lines.length + ") ";
+          for(let i = 0; i < lines.length; i++){
+            document.getElementById("lines").innerHTML += lines[i] + " ";
+          }
+          document.getElementById("routes").innerHTML += "(" + routes.length + ") ";
+          for(let i = 0; i < routes.length; i++){
+            if(i < routes.length - 1){
+              document.getElementById("routes").innerHTML += routes[i] + ", ";
+            } else {
+              document.getElementById("routes").innerHTML += routes[i];
+            }
+          }
+          document.getElementById("parking").innerHTML = parkingAreas;
+          document.getElementById("carChargers").innerHTML = carCharger;
+          document.getElementById("pickUpDropOff").innerHTML = pickDrops;
+          document.getElementById("pedalAndPark").innerHTML = pedalAndParks;
+
+          document.getElementById("cashless").innerHTML = cashlessFVM;
+          document.getElementById("fullService").innerHTML = cashlessFVM;
+          document.getElementById("charlieCards").innerHTML = charlieCards;
+
+          let acc;
+          switch(accessible){
+            case 0: acc = "Unknown"; break;
+            case 1: acc = "Yes"; break;
+            case 2: acc = "No";
+          }
+          document.getElementById("accessible").innerHTML = acc;
+          document.getElementById("escalators").innerHTML = escalators;
+          document.getElementById("elevators").innerHTML = elevators;
+          document.getElementById("portableLifts").innerHTML = portableLifts;
+          document.getElementById("elevatedSubplatforms").innerHTML = elevatedSubs;
+        }
+        function gotData(){
+          accessible = data2.data.attributes.wheelchair_boarding;
+
+          for(let i = 0; i < data.data.length; i++){
+            let item = data.data[i];
+            let type = item.attributes.type;
+            switch(type){
+              case "ESCALATOR":              escalators++;     break;
+              case "ELEVATOR":               elevators++;      break;
+              case "BIKE_STORAGE":           pedalAndParks++;  break;
+              case "FARE_MEDIA_ASSISTANT":   charlieCards++;   break;
+              case "ELECTRIC_CAR_CHARGERS":  carCharger++;     break;
+              case "FARE_VENDING_MACHINE":   fareVending(item);break;
+              case "PARKING_AREA":           parkingAreas++;   break;
+              case "PICK_DROP":              pickDrops++;      break;
+              case "PORTABLE_BOARDING_LIFT": portableLifts++;  break;
+              case "ELEVATED_SUBPLATFORM":   elevatedSubs++;   break;
+            }
+          }
+          addToHTML();
+        }
+        function fareVending(machine){
+          let props = machine.attributes.properties;
+          let cashAccepted = false;
+          for(let i = 0; i < props.length; i++){
+            if(props[i].value == "cash"){
+              cashAccepted = true;
+            }
+          }
+          if(cashAccepted){
+            fullServiceFVM++;
+          } else{
+            cashlessFVM++;
+          }
+        }
+        function getPlaceName(s){
+          let stations = {
+          'place-alfcl':"Alewife",
+          'place-alsgr':"Allston Street",
+          'place-andrw':"Andrew",
+          'place-aport':"Airport",
+          'place-aqucl':"Aquarium",
+          'place-armnl':"Arlington",
+          'place-asmnl':"Ashmont",
+          'place-astao':"Assembly",
+          'place-babck':"Babcock Street",
+          'place-bbsta':"Back Bay",
+          'place-bckhl':"Back of the Hill",
+          'place-bcnfd':"Beaconsfield",
+          'place-bcnwa':"Washington Square",
+          'place-bland':"Blandford Street",
+          'place-bmmnl':"Beachmont",
+          'place-bndhl':"Brandon Hall",
+          'place-bomnl':"Bowdoin",
+          'place-boyls':"Boylston",
+          'place-brdwy':"Broadway",
+          'place-brico':"Packards Corner",
+          'place-brkhl':"Brookline Hills",
+          'place-brmnl':"Brigham Circle",
+          'place-brntn':"Braintree",
+          'place-bucen':"Boston University Central",
+          'place-buest':"Boston University East",
+          'place-butlr':"Butler",
+          'place-buwst':"Boston University West",
+          'place-bvmnl':"Brookline Village",
+          'place-capst':"Capen Street",
+          'place-ccmnl':"Community College",
+          'place-cedgr':"Cedar Grove",
+          'place-cenav':"Central Avenue",
+          'place-chhil':"Chestnut Hill",
+          'place-chill':"Chestnut Hill Avenue",
+          'place-chmnl':"Charles/MGH",
+          'place-chncl':"Chinatown",
+          'place-chswk':"Chiswick Road",
+          'place-clmnl':"Cleveland Circle",
+          'place-cntsq':"Central",
+          'place-coecl':"Copley",
+          'place-cool' :"Coolidge Corner",
+          'place-crtst':"Courthouse",
+          'place-davis':"Davis",
+          'place-denrd':"Dean Road",
+          'place-dwnxg':"Downtown Crossing",
+          'place-eliot':"Eliot",
+          'place-engav':"Englewood Avenue",
+          'place-fbkst':"Fairbanks Street",
+          'place-fenwd':"Fenwood Road",
+          'place-fenwy':"Fenway",
+          'place-fldcr':"Fields Corner",
+          'place-forhl':"Forest Hills",
+          'place-gover':"Government Center",
+          'place-grigg':"Griggs Street",
+          'place-grnst':"Green Street",
+          'place-haecl':"Haymarket",
+          'place-harsq':"Harvard",
+          'place-harvd':"Harvard Avenue",
+          'place-hsmnl':"Heath Street",
+          'place-hwsst':"Hawes Street",
+          'place-hymnl':"Hynes Convention Center",
+          'place-jaksn':"Jackson Square",
+          'place-jfk'  :"JFK/UMass",
+          'place-kencl':"Kenmore",
+          'place-knncl':"Kendall/MIT",
+          'place-kntst':"Kent Street",
+          'place-lake' :"Boston College",
+          'place-lech' :"Lechmere",
+          'place-lngmd':"Longwood Medical Area",
+          'place-longw':"Longwood",
+          'place-masta':"Massachusetts Avenue",
+          'place-matt' :"Mattapan",
+          'place-mfa'  :"Museum of Fine Arts",
+          'place-miltt':"Milton",
+          'place-mispk':"Mission Park",
+          'place-mlmnl':"Malden Center",
+          'place-mvbcl':"Maverick",
+          'place-newtn':"Newton Highlands",
+          'place-newto':"Newton Centre",
+          'place-north':"North Station",
+          'place-nqncy':"North Quincy",
+          'place-nuniv':"Northeastern University",
+          'place-ogmnl':"Oak Grove",
+          'place-orhte':"Orient Heights",
+          'place-pktrm':"Park Street",
+          'place-plsgr':"Pleasant Street",
+          'place-portr':"Porter",
+          'place-prmnl':"Prudential",
+          'place-qamnl':"Quincy Adams",
+          'place-qnctr':"Quincy Center",
+          'place-rbmnl':"Revere Beach",
+          'place-rcmnl':"Roxbury Crossing",
+          'place-river':"Riverside",
+          'place-rsmnl':"Reservoir",
+          'place-rugg' :"Ruggles",
+          'place-rvrwy':"Riverway",
+          'place-sbmnl':"Stony Brook",
+          'place-sdmnl':"Suffolk Downs",
+          'place-shmnl':"Savin Hill",
+          'place-smary':"Saint Marys Street",
+          'place-smmnl':"Shawmut",
+          'place-sougr':"South Street",
+          'place-spmnl':"Science Park",
+          'place-sstat':"South Station",
+          'place-state':"State Street",
+          'place-sthld':"Sutherland Road",
+          'place-stplb':"Saint Paul Street (B)",
+          'place-stpul':"Saint Paul Street (C)",
+          'place-sull' :"Sullivan Square",
+          'place-sumav':"Summit Avenue",
+          'place-symcl':"Symphony",
+          'place-tapst':"Tappan Street",
+          'place-tumnl':"Tufts Medical Center",
+          'place-valrd':"Valley Road",
+          'place-waban':"Waban",
+          'place-wascm':"Washington Street",
+          'place-welln':"Wellington",
+          'place-wimnl':"Wood Island",
+          'place-wlsta':"Wollaston",
+          'place-wondl':"Wonderland",
+          'place-woodl':"Woodland",
+          'place-wrnst':"Warren Street",
+          'place-wtcst':"World Trade Center",
+          'place-chels':"Chelsea",
+          'place-belsq':"Bellingham Square",
+          'place-boxdt':"Box District",
+          'place-estav':"Eastern Avenue",
+          '64'         :"Dudley Square",
+          '61'         :"Melnea Cass",
+          '60'         :"Lenox Street",
+          '55'         :"Massachusetts Avenue (Silver)",
+          '15176'      :"Worcester Square",
+          '19402'      :"Newton Street",
+          '5100'       :"Union Park Street",
+          '5098'       :"East Berkeley Street",
+          '49003'      :"Herald Street",
+          '74614'      :"Silver Line Way",
+          '31256'      :"Harbor Street",
+          '31257'      :"Tide Street",
+          '30250'      :"23 Drydock Avenue",
+          '31258'      :"88 Black Falcon Avenue",
+          '31255'      :"Design Center",
+          '17091'      :"Terminal A",
+          '27092'      :"Terminal B Stop 1",
+          '17093'      :"Terminal B Stop 2",
+          '17094'      :"Terminal C",
+          '17095'      :"Terminal E",
+        };
+          for(let i in stations){
+            if(s == stations[i]){
+              return i;
+            }
+          }
+          return "";
+        }
+    </script>
+    <title class="station-short"></title>
   </head>
   <body>
-    <script type="text/javascript">
-      var name      ="JFK/UMass Station";
-      var users     ="8, 920";
-      var lines     ="(1) Red Line";
-      var routes    ="(2) RL-Ashmont, RL-Braintree";
-      var csa       ="New";
-      var afc       ="7";
-      var cfvm      ="1";
-      var fsfvm     ="4";
-      var pv        ="0";
-      var accessable="Yes";
-      var elevators ="2";
-      var escalators="1";
-      var se        ="1";
-      var stationID ="013-jfk-umass";
-      var folder    ="001-022-red";
-      var headImage ="001.jpg";
-      var olColor   ="ol-red";
-      var imgInGal  =2;
-    </script>
-    <header class="station-header br-red">
-      <h1 id="in0" class="station-title">Andrew Station</h1>
+    <header class="station-header" id="br_line">
+      <h1 class="station-full station-title"></h1>
     </header>
     <div class="introduction">
-      <h3>JFK/UMass station is a station on the <a class="hv-red ul-red in-line" href="../red-menu.html">Red Line</a>.</h3>
+      <h3><span class="station-short"></span> station is a<span id="terminus"></span> station on the <span id="menu"></span>.</h3>
     </div>
-    <div class="station-image-div"><img id="head-image"></div>
-    <script type="text/javascript">
-      document.getElementById("head-image").src="../../images/" + folder + "/" + stationID + "/" + headImage;
-      document.getElementById("head-image").className="station-image " + olColor;
-    </script>
-    <div class="stats">    <div class="stats">
-      <h2>General Information</h2>
+    <div class="stats">
+      <h2>Station Information</h2>
       <table>
         <tr>
-          <th class="tb-red">Name</th>
-          <td id="in1"></td>
+          <th class="tb_line">Name</th>
+          <td class="station-full"></td>
         </tr>
         <tr>
-          <th class="tb-red">Daily Users (2013)</th>
-          <td id="in2"></td>
+          <th class="tb_line">Daily Users</th>
+          <td id="users"></td>
         </tr>
         <tr>
-          <th class="tb-red">Lines Served</th>
-          <td id="in3"></td>
+          <th class="tb_line">Lines Served</th>
+          <td id="lines"></td>
         </tr>
         <tr>
-          <th class="tb-red">Routes Served</th>
-          <td id="in4"></td>
+          <th class="tb_line">Routes Served</th>
+          <td id="routes"></td>
+        </tr>
+        <tr>
+          <th class="tb_line">Parking Areas</th>
+          <td id="parking"></td>
+        </tr>
+        <tr>
+          <th class="tb_line">Electric Car Chargers</th>
+          <td id="carChargers"></td>
+        </tr>
+        <tr>
+          <th class="tb_line">Pick Up/Drop Off Areas</th>
+          <td id="pickUpDropOff"></td>
+        </tr>
+        <tr>
+          <th class="tb_line">Pedal-and-Parks</th>
+          <td id="pedalAndPark"></td>
         </tr>
       </table>
       </div>
       <div class="stats">
-        <h2>Fare Collection Information</h2>
+        <h2>Fare Information</h2>
         <table>
           <tr>
-            <th class="tb-red">CSA Gates</th>
-            <td id="in5"></td>
+            <th class="tb_line">Cashless FVMs</th>
+            <td id="cashless"></td>
           </tr>
           <tr>
-            <th class="tb-red">AFC Gates</th>
-            <td id="in6"></td>
+            <th class="tb_line">Full Service FVMs</th>
+            <td id="fullService"></td>
           </tr>
           <tr>
-            <th class="tb-red">Cashless FVMs</th>
-            <td id="in7"></td>
-          </tr>
-          <tr>
-            <th class="tb-red">Full Service FVMs</th>
-            <td id="in8"></td>
-          </tr>
-          <tr>
-            <th class="tb-red">Platform Validators</th>
-            <td id="in9"></td>
+            <th class="tb_line">Charlie Card Customer Service Agents</th>
+            <td id="charlieCards"></td>
           </tr>
         </table>
     </div>
@@ -90,49 +379,26 @@
       <h2>Accessibility Information</h2>
       <table>
         <tr>
-          <th class="tb-red">Accessible</th>
-          <td id="in10"></td>
+          <th class="tb_line">Accessible</th>
+          <td id="accessible"></td>
         </tr>
         <tr>
-          <th class="tb-red">Elevators</th>
-          <td id="in11"></td>
+          <th class="tb_line">Escalators</th>
+          <td id="escalators"></td>
         </tr>
         <tr>
-          <th class="tb-red">Escalators</th>
-          <td id="in12"></td>
+          <th class="tb_line">Elevators</th>
+          <td id="elevators"></td>
         </tr>
         <tr>
-          <th class="tb-red">Staffed Entrances</th>
-          <td id="in13"></td>
+          <th class="tb_line">Portable Lifts</th>
+          <td id="portableLifts"></td>
+        </tr>
+        <tr>
+          <th class="tb_line">Elevated Subplatforms</th>
+          <td id="elevatedSubplatforms"></td>
         </tr>
       </table>
     </div>
-    <div class="stats" id="gallery">
-      <h2>Image Gallery</h2>
-    </div>
-
-    <script type="text/javascript">
-      document.getElementById("in0").innerHTML=name;
-      document.getElementById("in1").innerHTML=name;
-      document.getElementById("in2").innerHTML=users;
-      document.getElementById("in3").innerHTML=lines;
-      document.getElementById("in4").innerHTML=routes;
-      document.getElementById("in5").innerHTML=csa;
-      document.getElementById("in6").innerHTML=afc;
-      document.getElementById("in7").innerHTML=cfvm;
-      document.getElementById("in8").innerHTML=fsfvm;
-      document.getElementById("in9").innerHTML=pv;
-      document.getElementById("in10").innerHTML=accessable;
-      document.getElementById("in11").innerHTML=elevators;
-      document.getElementById("in12").innerHTML=escalators;
-      document.getElementById("in13").innerHTML=se;
-      let imgIndex = 2;
-      for(let i = 0; i < imgInGal; i++){
-         document.getElementById("gallery").innerHTML+='<div class="station-image-div"><img id="gal-image-' + imgIndex + '"></div>';
-         document.getElementById("gal-image-" + imgIndex).className = "station-image " + olColor;
-         document.getElementById("gal-image-" + imgIndex).src="../../images/" + folder + "/" + stationID + "/00" + imgIndex + ".jpg";
-         imgIndex++;
-      }
-    </script>
   </body>
 </html>

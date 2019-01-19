@@ -14,6 +14,7 @@
     var users     ="9, 503";
     var lines     ="(1) Green Line";
     var routes    ="(3) GL-B, GL-C, GL-D";
+    var doors     ="Right for B Outbound and Inbound to Park Street, Left for C and D Outbound and Inbound towards North Station and Government Center";
     var csa       ="New";
     var afc       ="7";
     var cfvm      ="2";
@@ -57,6 +58,10 @@
         <tr>
           <th class="tb-green">Routes Served</th>
           <td id="in4"></td>
+        </tr>
+        <tr>
+          <th class="tb-green">Door Direction</th>
+          <td id="inDOOR"></td>
         </tr>
       </table>
       </div>
@@ -115,6 +120,7 @@
       document.getElementById("in2").innerHTML=users;
       document.getElementById("in3").innerHTML=lines;
       document.getElementById("in4").innerHTML=routes;
+      document.getElementById("inDOOR").innerHTML=doors;
       document.getElementById("in5").innerHTML=csa;
       document.getElementById("in6").innerHTML=afc;
       document.getElementById("in7").innerHTML=cfvm;

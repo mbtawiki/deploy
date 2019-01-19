@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
+/*
+COLORS
+Background - #222
+Red - #d11717
+Green - #0b841e
+Orange - #ce7b1c
+Blue - #190eb2
+Silver - #888
+Commuter Rail - #82079b
+Bus - #d8cc22
+Ferry -
+Grey -
+*/
+
+
 body{
   background-color: #222;
   margin: 0;
@@ -66,16 +81,16 @@ button{
 }
 
 .br-red{
-  background-color: red;
+  background-color: #d11717;
 }
 .br-orange{
-  background-color: orange;
+  background-color: #ce7b1c;
 }
 .br-green{
-  background-color: green;
+  background-color: #0b841e;
 }
 .br-blue{
-  background-color: blue;
+  background-color: #190eb2;
 }
 .br-silver{
   background-color: #888;
@@ -93,19 +108,19 @@ button{
   background-color: #1ec3e8;
 }
 .br-bus{
-  background-color: #eeee00;
+  background-color: #d8cc22;
 }
 .cl-red{
-  color: red;
+  color: #d11717;
 }
 .cl-orange{
-  color: orange;
+  color: #ce7b1c;
 }
 .cl-green{
-  color: green;
+  color: #0b841e;
 }
 .cl-blue{
-  color: blue;
+  color: #190eb2;
 }
 .cl-silver{
   color: #888;
@@ -178,8 +193,8 @@ button{
 }
 .hv-bus:hover{
   color: white;
-  background-color: #eeee00;
-  text-decoration-color: #eeee00;
+  background-color: #d8cc22;
+  text-decoration-color: #d8cc22;
   border-radius: 5px;
 }
 .introduction{
@@ -249,7 +264,7 @@ th{
   border-bottom: 2px solid #82079b;
 }
 .tb-bus{
-  border-bottom: 2px solid #eeee00;
+  border-bottom: 2px solid #d8cc22;
 }
 .tb-ferry{
   border-bottom: 2px solid #1ec3e8;
@@ -279,7 +294,7 @@ border-bottom: 2px solid white;
   border: 6px solid #82079b;
 }
 .ol-bus{
-  border: 6px solid #eeee00;
+  border: 6px solid #d8cc22;
 }
 .ol-ferry{
   border: 6px solid #1ec3e8;
@@ -331,24 +346,24 @@ border-bottom: 2px solid white;
   margin-top: 20px;
 }
 .ul-red{
-  -webkit-text-decoration-color: red;
+  -webkit-text-decoration-color: #d11717;
   text-decoration: underline;
-  text-decoration-color: red;
+  text-decoration-color: #d11717;
 }
 .ul-blue{
-  -webkit-text-decoration-color: blue;
+  -webkit-text-decoration-color: #190eb2;
   text-decoration: underline;
-  text-decoration-color: blue;
+  text-decoration-color: #190eb2;
 }
 .ul-orange{
-  -webkit-text-decoration-color: orange;
+  -webkit-text-decoration-color: #ce7b1c;
   text-decoration: underline;
-  text-decoration-color: orange;
+  text-decoration-color: #ce7b1c;
 }
 .ul-green{
-  -webkit-text-decoration-color: green;
+  -webkit-text-decoration-color: #0b841e;
   text-decoration: underline;
-  text-decoration-color: green;
+  text-decoration-color: #0b841e;
 }
 .ul-silver{
   -webkit-text-decoration-color: #888;
@@ -376,9 +391,9 @@ border-bottom: 2px solid white;
   text-decoration-color: #b5a68b;
 }
 .ul-bus{
-  -webkit-text-decoration-color: #eeee00;
+  -webkit-text-decoration-color: #d8cc22;
   text-decoration: underline;
-  text-decoration-color: #eeee00;
+  text-decoration-color: #d8cc22;
 }
 
 
@@ -427,34 +442,34 @@ header{
 .red{
   grid-area: red;
   left: 5%;
-  background-color: red;
-  border: 3px solid red;
+  background-color: #d11717;
+  border: 3px solid #d11717;
 }
 
 .s-red{
-  background-color: red;
-  border: 3px solid red;
+  background-color: #d11717;
+  border: 3px solid #d11717;
 }
 
 .green{
   grid-area: green;
   left: 5%;
-  background-color: green;
-  border: 3px solid green;
+  background-color: #0b841e;
+  border: 3px solid #0b841e;
 }
 
 .orange{
   grid-area: orange;
   left: 5%;
-  background-color: orange;
-  border: 3px solid orange;
+  background-color: #ce7b1c;
+  border: 3px solid #ce7b1c;
 }
 
 .blue{
   left: 5%;
   grid-area: blue;
-  background-color: blue;
-  border: 3px solid blue;
+  background-color: #190eb2;
+  border: 3px solid #190eb2;
 }
 
 .silver{
@@ -480,8 +495,8 @@ header{
 .bus{
   left: 5%;
   grid-area: bus;
-  background-color: #eeee00;
-  border: 3px solid #eeee00;
+  background-color: #d8cc22;
+  border: 3px solid #d8cc22;
 }
 
 .ferry{
@@ -542,7 +557,7 @@ a{
   border: 3px solid #82079b
 }
 .bus:hover{
-  border: 3px solid #eeee00;
+  border: 3px solid #d8cc22;
 }
 .ferry:hover{
   border: 3px solid #1ec3e8;
